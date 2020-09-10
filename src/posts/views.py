@@ -12,6 +12,10 @@ from .serializers import CommentSerializer, PostSerializer
 
 
 class PostViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    """
+    Post model CRUD viewset
+    Also provides endpoint 'upvote_post'
+    """
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
@@ -29,5 +33,8 @@ class PostViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
 
 class CommentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    """
+    Comment model CRUD viewset
+    """
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer

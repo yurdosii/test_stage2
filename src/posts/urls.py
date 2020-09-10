@@ -1,3 +1,7 @@
+"""
+Posts API urls
+"""
+
 from rest_framework_extensions.routers import ExtendedDefaultRouter
 
 from .views import CommentViewSet, PostViewSet
