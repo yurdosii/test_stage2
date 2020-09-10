@@ -22,7 +22,7 @@ class Post(models.Model):
     )
 
     def __str__(self):
-        return f"Post #{self.id}, by {self.author_name} - {self.title}"
+        return f"Post #{self.id} by {self.author_name} - {self.title}"
 
     class Meta:
         db_table = 'posts'
@@ -48,7 +48,7 @@ class Comment(models.Model):
     )
 
     def __str__(self):
-        return f"Comment #{self.id}, by {self.author_name} on {self.post.title}"
+        return f"Comment #{self.id} by {self.author_name} on {self.post.title}"
 
     class Meta:
         db_table = 'comments'

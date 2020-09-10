@@ -2,7 +2,9 @@ asgiref==3.2.10
 Django==3.1.1
 django-rest-framework==0.1.0
 djangorestframework==3.11.1
+drf-extensions @ git+git://github.com/chibisov/drf-extensions.git@8001a440c7322be26bbe2d16f3a334a8b0b5860b
 flake8==3.8.3
+isort==5.5.2
 mccabe==0.6.1
 psycopg2==2.8.6
 pycodestyle==2.6.0
