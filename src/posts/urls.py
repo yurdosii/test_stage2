@@ -1,5 +1,6 @@
 from rest_framework import routers
-from .views import PostViewSet, CommentViewSet
+
+from .views import CommentViewSet, PostViewSet
 
 router = routers.DefaultRouter()
 router.register('posts', PostViewSet)
