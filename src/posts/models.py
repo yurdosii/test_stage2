@@ -47,5 +47,8 @@ class Comment(models.Model):
         auto_now_add=True
     )
 
+    def __str__(self):
+        return f"Comment #{self.id}, by {self.author_name} on {self.post.title}"
+
     class Meta:
         db_table = 'comments'
