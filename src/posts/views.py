@@ -16,12 +16,13 @@ class PostViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     Post model CRUD viewset
     Also provides endpoint 'upvote_post'
     """
+
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
     # endpoint for upvote
-    @action(detail=True, methods=['GET'])
-    def upvote_post(self, request, pk=None):
+    @action(detail=True, methods=["GET"])
+    def upvote_post(self, *args, **kwargs):
         """
         Endpoint that enables upvoting the post
         Upvoting the post - field 'upvotes_amount' will be increased by one
@@ -29,12 +30,13 @@ class PostViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         post = self.get_object()
         post.upvotes_amount += 1
         post.save()
-        return Response({'status': 'post is upvoted'})
+        return Response({"status": "post is upvoted"})
 
 
 class CommentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     """
     Comment model CRUD viewset
     """
+
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
