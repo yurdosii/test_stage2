@@ -5,12 +5,13 @@ Posts API viewsets
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework_extensions.mixins import NestedViewSetMixin
 
 from .models import Comment, Post
 from .serializers import CommentSerializer, PostSerializer
 
 
-class PostViewSet(viewsets.ModelViewSet):
+class PostViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
@@ -27,6 +28,6 @@ class PostViewSet(viewsets.ModelViewSet):
         return Response({'status': 'post is upvoted'})
 
 
-class CommentViewSet(viewsets.ModelViewSet):
+class CommentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
