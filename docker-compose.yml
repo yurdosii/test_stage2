@@ -2,7 +2,6 @@ version: '2'
 services:
     web:
         build: ./
-        command: python ./src/manage.py runserver 0.0.0.0:8000
         ports:
             - 8000:8000
         volumes:
@@ -11,6 +10,7 @@ services:
             - db
         environment:
             DATABASE_URL: postgres://postgres@db/postgres
+            PORT: 8000
     db:
         image: postgres
         environment:
