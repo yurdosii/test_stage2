@@ -12,6 +12,7 @@ class Command(BaseCommand):
     Custom django-admin command
     Can be called with 'python manage.py reset_upvotes'
     Command resets upvotes_amount in posts
+    Command will be used inside the job that will run once a day
     """
 
     help = "Reset field 'upvotes_amount' in posts"
