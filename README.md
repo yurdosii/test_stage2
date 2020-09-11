@@ -5,39 +5,17 @@
 git clone https://github.com/yurdosii/test_stage2.git
 ```
 
-## Check code quality
-Run [flake8](https://flake8.pycqa.org/en/latest/):
-```
-flake8 src/
-```
-Run [black](https://github.com/psf/black):
-```
-black src/
-```
-Install and run [pyright](https://github.com/microsoft/pyright):
-```
-sudo npm install -g pyright
-
-pyright src/
-```
-
 ## Set environment variables
 Add .env file:
 ```
-cd src/news_api
+cd test_stage2/src/news_api
 touch .env
 nano .env
 ```
-Inside of the file you can set variables:
-* "DEBUG" (optional, default=False)
-* "DATABASE_URL" (optional, docker-compose override this variable)
-* "SECRET_KEY"
-
-The completed file will look like:
+Inside of the file set DEBUG and SECRET_KEY variables:
 ```
-DEBUG=<value>
-DATABASE_URL=<value>
-SECRET_KEY=<value>
+DEBUG=True
+SECRET_KEY=<value>  (e.g. "SECRET_KEY=10randomkey15")
 ```
 
 ## Run API
@@ -50,6 +28,34 @@ docker-compose up
 Run migrations if you run API for the first time (run in another terminal):
 ```
 docker-compose run --rm web ./src/manage.py migrate
+```
+
+## Check code quality
+In order to check code quality you should create virtual environment (you should be in 'test-stage2' folder):
+```
+virtualenv venv
+```
+Activate environment:
+```
+source venv/bin/activate
+```
+Install requirements:
+```
+pip install -r requirements.txt
+```
+Now you can run [flake8](https://flake8.pycqa.org/en/latest/):
+```
+flake8 src/
+```
+Run [black](https://github.com/psf/black):
+```
+black src/
+```
+Install and run [pyright](https://github.com/microsoft/pyright):
+```
+sudo npm install -g pyright
+
+pyright src/
 ```
 
 ## Additional links
