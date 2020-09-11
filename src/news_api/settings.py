@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+import django_heroku
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,7 +38,11 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = ["test-stage2.herokuapp.com"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "test-stage2.herokuapp.com"
+]
 
 
 # Application definition
@@ -128,3 +133,34 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
+
+# # Logging
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'formatters': {
+#         'file': {
+#             'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+#         }
+#     },
+#     'handlers': {
+#         'file': {
+#             'level': 'DEBUG',
+#             'class': 'logging.FileHandler',
+#             'formatter': 'file',
+#             'filename': 'tmp/debug.log',
+#         }
+#     },
+#     'loggers': {
+#         '': {
+#             'handlers': ['file'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         },
+#     },
+# }
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']  # 
