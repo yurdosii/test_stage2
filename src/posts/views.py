@@ -2,7 +2,7 @@
 Posts API viewsets
 """
 
-from rest_framework import viewsets
+from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework_extensions.mixins import NestedViewSetMixin
@@ -30,7 +30,7 @@ class PostViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         post = self.get_object()
         post.upvotes_amount += 1
         post.save()
-        return Response({"status": "post is upvoted"})
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class CommentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
