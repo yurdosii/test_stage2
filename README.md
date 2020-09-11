@@ -6,15 +6,15 @@ git clone https://github.com/yurdosii/test_stage2.git
 ```
 
 ## Check code quality
-Run [flake8](https://flake8.pycqa.org/en/latest/)
+Run [flake8](https://flake8.pycqa.org/en/latest/):
 ```
 flake8 src/
 ```
-Run [black](https://github.com/psf/black)
+Run [black](https://github.com/psf/black):
 ```
 black src/
 ```
-Install and run [pyright](https://github.com/microsoft/pyright)
+Install and run [pyright](https://github.com/microsoft/pyright):
 ```
 sudo npm install -g pyright
 
@@ -22,18 +22,18 @@ pyright src/
 ```
 
 ## Set environment variables
-Add .env file
+Add .env file:
 ```
 cd src/news_api
 touch .env
 nano .env
 ```
-Inside of file you can set variables:
+Inside of the file you can set variables:
 * "DEBUG" (optional, default=False)
 * "DATABASE_URL" (optional, docker-compose override this variable)
 * "SECRET_KEY"
 
-Filled file will look like:
+The completed file will look like:
 ```
 DEBUG=<value>
 DATABASE_URL=<value>
@@ -41,7 +41,7 @@ SECRET_KEY=<value>
 ```
 
 ## Run API
-Run using docker-compose
+Run using docker-compose:
 ```
 docker-compose build
 
