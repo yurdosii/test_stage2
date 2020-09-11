@@ -3,6 +3,7 @@ asgiref==3.2.10
 black==20.8b1
 click==7.1.2
 Django==3.1.1
+django-environ==0.4.5
 django-rest-framework==0.1.0
 djangorestframework==3.11.1
 drf-extensions @ git+git://github.com/chibisov/drf-extensions.git@8001a440c7322be26bbe2d16f3a334a8b0b5860b
