@@ -41,7 +41,7 @@ class CommentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
-    def perform_create(self, serializer: CommentSerializer) -> Comment:
+    def perform_create(self, serializer: CommentSerializer) -> None:
         """
         This method use URL kwargs to set field 'post' of model 'Comment'
         when new 'Comment' instance is being added.
