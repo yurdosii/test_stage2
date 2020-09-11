@@ -22,7 +22,7 @@ class PostViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     # endpoint for upvote
     @action(detail=True, methods=["GET"])
-    def upvote_post(self, *args, **kwargs):
+    def upvote_post(self, *args, **kwargs) -> Response:
         """
         Endpoint that enables upvoting the post
         Upvoting the post - field 'upvotes_amount' will be increased by one
@@ -40,3 +40,12 @@ class CommentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+
+    def perform_create(self, serializer: CommentSerializer) -> Comment:
+        """
+        This method use URL kwargs to set field 'post' of model 'Comment'
+        when new 'Comment' instance is being added.
+        As 'post' is read-only field, the only way to get it is from URL.
+        """
+        post_id = int(self.kwargs["parent_lookup_post"])
+        serializer.save(post_id=post_id)
