@@ -1,8 +1,8 @@
 """
-Posts API viewsets
+News API viewsets
 """
 
-from rest_framework import viewsets
+from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework_extensions.mixins import NestedViewSetMixin
@@ -30,7 +30,7 @@ class PostViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         post = self.get_object()
         post.upvotes_amount += 1
         post.save()
-        return Response({"status": "post is upvoted"})
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class CommentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
@@ -41,7 +41,7 @@ class CommentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
-    def perform_create(self, serializer: CommentSerializer) -> Comment:
+    def perform_create(self, serializer: CommentSerializer) -> None:
         """
         This method use URL kwargs to set field 'post' of model 'Comment'
         when new 'Comment' instance is being added.
