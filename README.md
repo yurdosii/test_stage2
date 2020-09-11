@@ -53,6 +53,6 @@ docker-compose run --rm web ./src/manage.py migrate
 ```
 
 ## Additional links
-Postman collection - [link](https://www.getpostman.com/collections/9aa6b713d9be24efa6fa)
+Postman collection - https://www.getpostman.com/collections/9aa6b713d9be24efa6fa
 
 Deployment link (on Heroku) - [link](http://test-stage2.herokuapp.com/posts/)

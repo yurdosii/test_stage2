@@ -1,5 +1,5 @@
 """
-Posts API viewsets
+News API viewsets
 """
 
 from rest_framework import status, viewsets

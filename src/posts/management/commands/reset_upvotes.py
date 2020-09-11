@@ -8,9 +8,18 @@ from posts.models import Post  # type: ignore
 
 
 class Command(BaseCommand):
+    """
+    Custom django-admin command
+    Can be called with 'python manage.py reset_upvotes'
+    Command resets upvotes_amount in posts
+    """
+
     help = "Reset field 'upvotes_amount' in posts"
 
     def handle(self, *args, **kwargs) -> None:
+        """
+        Command handler
+        """
         for post in Post.objects.all():
             post.upvotes_amount = 0
             post.save()

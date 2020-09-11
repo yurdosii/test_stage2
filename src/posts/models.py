@@ -1,7 +1,15 @@
+"""
+News API models
+"""
+
 from django.db import models
 
 
 class Post(models.Model):
+    """
+    Post model class
+    """
+
     title = models.CharField(
         verbose_name="post's title",
         max_length=150,
@@ -27,6 +35,11 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    """
+    Comment model class
+    Model represents post's comment
+    """
+
     post = models.ForeignKey(
         Post,
         on_delete=models.CASCADE,
